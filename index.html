@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr" data-qb-installed="true">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <title>Accueil — MineGarp</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+        <style>
+      :root {
+        --bg: #3d3d3f;
+        --panel: #2f2f31;
+        --text: #f2f2f2;
+        --muted: #cfcfcf;
+        --accent: #e5e5e5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Kanit", "Noto Sans Thai", "Segoe UI", system-ui, sans-serif;
+        background: radial-gradient(1200px 800px at 20% 10%, #4a4a4d 0%, var(--bg) 55%);
+        color: var(--text);
+      }
+
+      .page {
+        width: min(1100px, 92vw);
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 24px;
+        padding: 32px 0;
+      }
+
+      .delta {
+        max-width: 560px;
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: clamp(36px, 6vw, 60px);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+
+      .soustitre {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .sousnom {
+        font-size: clamp(22px, 3.2vw, 34px);
+        font-weight: 700;
+      }
+
+      .ligne {
+        height: 2px;
+        width: 100%;
+        background: var(--accent);
+        opacity: 0.6;
+      }
+
+      .description {
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--muted);
+        margin: 0 0 32px;
+      }
+
+      .social {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+
+      .social strong {
+        display: block;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .social-description {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+
+      .social-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 2px 0;
+        text-decoration: none;
+        color: var(--muted);
+        border: none;
+        background: transparent;
+        transition: transform 0.2s ease, color 0.2s ease;
+        animation: fade-up 0.5s ease both;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        color: var(--accent);
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        color: var(--muted);
+        flex: 0 0 auto;
+      }
+
+      .button:hover .icon {
+        color: var(--accent);
+      }
+
+      .button span {
+        position: relative;
+      }
+
+      .button span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        opacity: 0;
+        transform: scaleX(0.6);
+        transform-origin: left;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .button:hover span::after {
+        opacity: 0.5;
+        transform: scaleX(1);
+      }
+
+      .social-buttons .button:nth-child(1) { animation-delay: 0.04s; }
+      .social-buttons .button:nth-child(2) { animation-delay: 0.08s; }
+      .social-buttons .button:nth-child(3) { animation-delay: 0.12s; }
+      .social-buttons .button:nth-child(4) { animation-delay: 0.16s; }
+      .social-buttons .button:nth-child(5) { animation-delay: 0.2s; }
+      .social-buttons .button:nth-child(6) { animation-delay: 0.24s; }
+      .social-buttons .button:nth-child(7) { animation-delay: 0.28s; }
+      .social-buttons .button:nth-child(8) { animation-delay: 0.32s; }
+      .social-buttons .button:nth-child(9) { animation-delay: 0.36s; }
+
+      .footer-note {
+        margin-top: 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .contact-card {
+        margin-top: 26px;
+        background: linear-gradient(180deg, #3a3a3c, #303033);
+        border-radius: 12px;
+        padding: 18px 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .contact-title {
+        font-size: 14px;
+        letter-spacing: 1px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .contact-email {
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .mascot-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mascot {
+        width: min(320px, 70vw);
+        height: auto;
+        filter: drop-shadow(18px 24px 0 rgba(0, 0, 0, 0.35));
+        animation: float-in 0.8s ease 0.1s both;
+      }
+
+      .hero {
+        animation: fade-up 0.6s ease both;
+      }
+
+      @keyframes fade-up {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float-in {
+        from {
+          opacity: 0;
+          transform: translateY(12px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero,
+        .mascot,
+        .button {
+          animation: none;
+        }
+
+        .button {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        body {
+          align-items: flex-start;
+        }
+
+        .page {
+          grid-template-columns: 1fr;
+          padding: 48px 0 64px;
+        }
+
+        .mascot-wrap {
+          order: -1;
+          justify-content: flex-start;
+        }
+
+        .mascot {
+          width: min(260px, 70vw);
+        }
+      }
+    </style>
+    </head>
+    <body>
+        <main class="page">
+            <section class="delta">
+                <h1>We are <br>« MineGarp.PED »</h1>
+                <div class="soustitre">
+                    <div class="sousnom">มายก๊าบดอทเป็ด</div>
+                    <div class="ligne"></div>
+                </div>
+                <p class="description">Nous sommes les canards qui publie simplement les actulités de Minecraft et la société des jeux.</p>
+            </section>
+             <div class="mascot-wrap">
+                <img class="mascot" src="WOLFDOTPED.png" alt="MineGarp">
+             </div>
+        </main>
+    </body>
+</html>
